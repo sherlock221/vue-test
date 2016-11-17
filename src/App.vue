@@ -1,7 +1,15 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <h3 v-text="test"></h3>
+    <img  v-on:click="test2" src="./assets/logo.png">
+    {{test}}
+
+    <router-link to="/foo">Go to Foo</router-link>
+
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
+
   </div>
 </template>
 
@@ -11,10 +19,19 @@ import Hello from './components/Hello'
 export default {
   name: 'app',
   data () {
-    "test" : 123
+    return {
+      "test" : 1,
+      "tmp" : 33
+    }
   },
   components: {
     Hello
+  },
+  methods:{
+      test2 : function(e){
+        console.log("shoudao..");
+      }
+
   }
 }
 </script>
@@ -28,4 +45,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    {{tmp}}
+    <h2 @click="test">Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -17,15 +18,26 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <slot>
+      如果没有分发内容则显示我。
+    </slot>
   </div>
 </template>
 
 <script>
 export default {
   name: 'hello',
+  props : ['tmp'],
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods : {
+    test :  function(){
+      console.log(this.tmp);
+      this.$emit("triggerChild");
+
     }
   }
 }
